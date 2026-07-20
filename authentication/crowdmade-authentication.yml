@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://crowdmade.com/.well-known/openid-configuration
+docs: https://crowdmade.com/.well-known/oauth-authorization-server
+notes: >-
+  crowdmade.com is a Shopify-hosted storefront; customer authentication is
+  provided by Shopify Customer Accounts (OpenID Connect). The UCP agent
+  commerce endpoint (/api/ucp/mcp) requires an agent profile URI on discovery
+  and explicit buyer approval at the moment of payment; read-only catalog
+  browsing (products.json, collections/*/products.json, /search) needs no auth.
+summary:
+  types: [openIdConnect, oauth2]
+  oauth2_flows: [authorizationCode]
+  grant_types: [authorization_code, refresh_token, 'urn:ietf:params:oauth:grant-type:jwt-bearer']
+  pkce: S256
+  token_endpoint_auth: client_secret_basic
+schemes:
+  - name: ShopifyCustomerAccountsOIDC
+    type: openIdConnect
+    issuer: https://shopify.com/authentication/17555355
+    openIdConnectUrl: https://crowdmade.com/.well-known/openid-configuration
+    authorization_endpoint: https://shopify.com/authentication/17555355/oauth/authorize
+    token_endpoint: https://shopify.com/authentication/17555355/oauth/token
+    end_session_endpoint: https://shopify.com/authentication/17555355/logout
+    jwks_uri: https://shopify.com/authentication/17555355/.well-known/jwks.json
+    id_token_signing_alg: RS256
+    code_challenge_methods: [S256]
+    scopes: [openid, email, 'customer-account-api:full', 'customer-account-mcp-api:full']
+    sources: [well-known/crowdmade-openid-configuration.json]
