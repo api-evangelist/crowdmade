@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of https://crowdmade.com/.well-known/*
+host: https://crowdmade.com
+notes: >-
+  crowdmade.com is a Shopify-hosted storefront. The OIDC/OAuth discovery
+  documents are served by Shopify Customer Accounts; the UCP profile advertises
+  an agent-facing Universal Commerce Protocol (UCP) MCP shopping service.
+documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: crowdmade-openid-configuration.json
+    kind: openid-configuration
+    issuer: https://shopify.com/authentication/17555355
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: crowdmade-oauth-authorization-server.json
+    kind: oauth-authorization-server
+    issuer: https://shopify.com/authentication/17555355
+  - path: /.well-known/ucp
+    status: 200
+    file: crowdmade-ucp.json
+    kind: ucp-merchant-profile
+    version: '2026-04-08'
+  - path: /agents.md
+    status: 200
+    file: crowdmade-agents.md
+    kind: agent-instructions
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

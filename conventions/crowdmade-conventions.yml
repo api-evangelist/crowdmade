@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: searched
+source: https://crowdmade.com/llms.txt
+docs:
+  - https://crowdmade.com/agents.md
+  - https://ucp.dev/2026-04-08/specification/overview/
+notes: >-
+  Cross-cutting conventions for CrowdMade's Shopify storefront and its UCP agent
+  commerce surface, captured verbatim from the store's published agent
+  instructions. No documented idempotency-key contract (Idempotency pointer
+  intentionally omitted).
+authentication:
+  style: OpenID Connect (Shopify Customer Accounts) for customer sign-in; UCP agent profile URI for MCP discovery.
+  read_only_browsing: No authentication required for catalog read endpoints.
+  see: authentication/crowdmade-authentication.yml
+agent_commerce:
+  protocol: UCP (Universal Commerce Protocol)
+  mcp_endpoint: https://crowdmade.com/api/ucp/mcp
+  discovery: https://crowdmade.com/.well-known/ucp
+  flow: [discover, search_catalog, create_cart, create_checkout, update_checkout, complete_checkout]
+  buyer_approval_invariant: >-
+    Agents MUST NOT complete payment without explicit contemporaneous buyer
+    consent. Absent that, route the purchase through the Shop skill / Shop Pay.
+  context_params:
+    - context.address_country
+    - context.currency
+read_endpoints:
+  products_page: GET /products/{handle}
+  product_json: GET /products/{handle}.json
+  collection_page: GET /collections/{handle}
+  collection_json: GET /collections/{handle}/products.json
+  browse_all: GET /collections/all
+  search: GET /search?q={query}&type=product
+  sitemap: GET /sitemap.xml
+rate_limiting:
+  documented: true
+  signal: HTTP 429
+  guidance: Back off on 429 responses; the UCP MCP endpoint is rate-limited per IP.
+versioning:
+  scheme: date-based UCP protocol versions
+  current: '2026-04-08'
+  supported: ['2026-04-08', '2026-01-23']
+policies:
+  privacy: https://crowdmade.com/policies/privacy-policy
+  terms: https://crowdmade.com/policies/terms-of-service
+  refund: https://crowdmade.com/policies/refund-policy

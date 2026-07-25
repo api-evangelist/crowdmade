@@ -1,7 +1,28 @@
 aid: crowdmade
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/crowdmade.png
 name: CrowdMade
-description: CrowdMade is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  CrowdMade partners with online creators from YouTube, Instagram, Snapchat and
+  beyond to design, produce, warehouse, and ship official merchandise their fans
+  are proud to wear. The public storefront at crowdmade.com runs on Shopify and,
+  as of 2026, exposes a machine- and agent-facing commerce surface: a published
+  Universal Commerce Protocol (UCP) MCP shopping endpoint, Shopify Customer
+  Accounts OpenID Connect / OAuth discovery documents, an llms.txt, and an
+  agents.md describing how AI shopping agents can search the catalog, build a
+  cart, and complete a buyer-approved checkout. It was surfaced as a portfolio
+  company of 500 Global and profiled into the API Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/crowdmade/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,10 +32,38 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Commerce
+- E-Commerce
+- Merchandise
+- Creator Economy
+- Shopify
+- Agent Commerce
+- MCP
+- Universal Commerce Protocol
+apis:
+- name: CrowdMade Agent Commerce (UCP)
+  description: >-
+    Agent-driven commerce over the Universal Commerce Protocol (UCP) served by
+    the crowdmade.com Shopify storefront, plus read-only catalog JSON endpoints
+    and Shopify Customer Accounts OpenID Connect authentication.
+  humanURL: https://crowdmade.com/agents.md
+  baseURL: https://crowdmade.com/api/ucp/mcp
+  tags:
+  - Commerce
+  - Agent Commerce
+  - MCP
+  properties:
+  - type: Documentation
+    url: https://crowdmade.com/agents.md
+  - type: MCPServer
+    url: mcp/crowdmade-mcp.yml
+  - type: Authentication
+    url: authentication/crowdmade-authentication.yml
+  - type: OAuthScopes
+    url: scopes/crowdmade-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +72,28 @@ maintainers:
 common:
 - type: Website
   url: https://crowdmade.com
+- type: Documentation
+  url: https://crowdmade.com/agents.md
+- type: TermsOfService
+  url: https://crowdmade.com/policies/terms-of-service
+- type: PrivacyPolicy
+  url: https://crowdmade.com/policies/privacy-policy
+- type: MCPServer
+  url: mcp/crowdmade-mcp.yml
+- type: WellKnown
+  url: well-known/crowdmade-well-known.yml
+- type: LLMsTxt
+  url: llms/crowdmade-llms.txt
+- type: Authentication
+  url: authentication/crowdmade-authentication.yml
+- type: OAuthScopes
+  url: scopes/crowdmade-scopes.yml
+- type: Conventions
+  url: conventions/crowdmade-conventions.yml
+- type: DomainSecurity
+  url: security/crowdmade-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
