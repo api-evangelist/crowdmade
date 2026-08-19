@@ -3,14 +3,14 @@ method: searched
 status: published
 source: https://crowdmade.com/.well-known/ucp
 docs:
-  - https://crowdmade.com/agents.md
-  - https://crowdmade.com/llms.txt
-  - https://ucp.dev/2026-04-08/specification/overview/
+- https://crowdmade.com/agents.md
+- https://crowdmade.com/llms.txt
+- https://ucp.dev/2026-04-08/specification/overview/
 protocol: UCP
 protocol_name: Universal Commerce Protocol
 protocol_versions:
-  - '2026-04-08'
-  - '2026-01-23'
+- '2026-04-08'
+- '2026-01-23'
 server:
   name: crowdmade-ucp-shopping
   service: dev.ucp.shopping
@@ -18,32 +18,36 @@ server:
   url: https://crowdmade.com/api/ucp/mcp
   canonical_url: https://crowdm.myshopify.com/api/ucp/mcp
   content_type: application/json
-  auth: >-
-    Agent must supply a UCP agent profile URI on discovery; checkout/payment
-    steps require explicit contemporaneous buyer approval. Read-only catalog
-    browsing needs no authentication.
+  auth: Agent must supply a UCP agent profile URI on discovery; checkout/payment steps require explicit
+    contemporaneous buyer approval. Read-only catalog browsing needs no authentication.
   schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
-notes: >-
-  crowdmade.com is a Shopify storefront that exposes agent-driven commerce via
-  the Universal Commerce Protocol (UCP) over MCP. Tools below are the documented
-  agent flow from the store's own /llms.txt and /agents.md; full tool schemas
-  are served live from the endpoint via tools/list (an agent profile URI is
-  required to enumerate them). Capabilities advertised in the UCP profile:
-  checkout, fulfillment, discount, cart, order, catalog.search, catalog.lookup.
+notes: 'crowdmade.com is a Shopify storefront that exposes agent-driven commerce via the Universal Commerce
+  Protocol (UCP) over MCP. Tools below are the documented agent flow from the store''s own /llms.txt and
+  /agents.md; full tool schemas are served live from the endpoint via tools/list (an agent profile URI
+  is required to enumerate them). Capabilities advertised in the UCP profile: checkout, fulfillment, discount,
+  cart, order, catalog.search, catalog.lookup.'
 tools:
-  - name: search_catalog
-    description: Find products in the store matching the buyer's intent.
-  - name: create_cart
-    description: Create a cart and add desired items.
-  - name: create_checkout
-    description: Start the purchase flow for a cart.
-  - name: update_checkout
-    description: Set shipping address and shipping method on a checkout.
-  - name: complete_checkout
-    description: Finalize the purchase (requires explicit buyer payment approval).
+- name: search_catalog
+  description: Find products in the store matching the buyer's intent.
+- name: create_cart
+  description: Create a cart and add desired items.
+- name: create_checkout
+  description: Start the purchase flow for a cart.
+- name: update_checkout
+  description: Set shipping address and shipping method on a checkout.
+- name: complete_checkout
+  description: Finalize the purchase (requires explicit buyer payment approval).
 payment_handlers:
-  - com.google.pay
+- com.google.pay
 alternatives:
-  - name: Shop skill
-    url: https://shop.app/SKILL.md
-    note: Recommended cross-store Shopify agent skill for buyer-approved Shop Pay checkout.
+- name: Shop skill
+  url: https://shop.app/SKILL.md
+  note: Recommended cross-store Shopify agent skill for buyer-approved Shop Pay checkout.
+deployment:
+  mode: remote
+  endpoint: https://crowdmade.com/api/ucp/mcp
+  verified: probed
+  probe: live
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
