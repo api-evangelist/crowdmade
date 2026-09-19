@@ -51,6 +51,16 @@ tags:
 - Merchandise
 - Creator Economy
 - Shopify
+- Agentic Commerce
+- MCP
+- Universal Commerce Protocol
+tags_raw:
+- Company
+- Commerce
+- E-Commerce
+- Merchandise
+- Creator Economy
+- Shopify
 - Agent Commerce
 - MCP
 - Universal Commerce Protocol
@@ -63,6 +73,10 @@ apis:
   humanURL: https://crowdmade.com/agents.md
   baseURL: https://crowdmade.com/api/ucp/mcp
   tags:
+  - Commerce
+  - Agentic Commerce
+  - MCP
+  tags_raw:
   - Commerce
   - Agent Commerce
   - MCP
