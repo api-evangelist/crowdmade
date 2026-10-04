@@ -89,6 +89,9 @@ apis:
     url: authentication/crowdmade-authentication.yml
   - type: OAuthScopes
     url: scopes/crowdmade-scopes.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
