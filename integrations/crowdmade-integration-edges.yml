@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/crowdmade/integrations
+- https://n8n.io/integrations/crowdmade/
+- https://composio.dev/toolkits/crowdmade
+- https://monid.ai/tools/crowdmade
+checked:
+- https://composio.dev/toolkits/crowdmade
+- https://monid.ai/tools/crowdmade
+- https://n8n.io/integrations/crowdmade/
+- https://zapier.com/apps/crowdmade/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
